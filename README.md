@@ -1,7 +1,7 @@
 # covidgrapher
 A python cli tool for producing covid graph data.
 
-Pass -i for an interactive CLI
+Pass -i for an interactive CLI, -h for help
 
 ## Usage:
 ```
@@ -16,7 +16,7 @@ optional arguments:
   -s, --smooth          Applies a 7-Day rolling average to daily increases to account for weekly reporting spikes if specified.
 ```
 
-<p align="center"><img src="https://raw.githubusercontent.com/BrewToolsDev/covidgrapher/primary/example.png"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/BrewToolsDev/covidgrapher/main/example.png"></p>
 
 Disclaimer: This program should not be used for anything critical. By using this program you agree not to hold me liable for any loss or injury that may occur.
 ```

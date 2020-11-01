@@ -1,5 +1,7 @@
 #covidgrapher.py
 #Copyright 2020, Andrew Spangler, All rights reserved.
+
+
 import urllib.request, json
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,6 +9,7 @@ import matplotlib.dates as mdates
 import argparse
 from statistics import mean
 from sys import exit
+import os
 
 opener = urllib.request.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -151,6 +154,7 @@ if __name__ == "__main__":
 	else: #If in args-based cli
 		output = bool(args.output)
 		filename = args.output or "output_graph.png"
+		filename = os.path.abspath(filename)
 		locality_type = bool(args.region)
 		region = args.region
 		if region:
@@ -163,14 +167,18 @@ if __name__ == "__main__":
 	#Get data from api
 	if locality_type: apiaddr = f"https://api.covidtracking.com/v1/states/{region}/daily.json"
 	else: apiaddr = 'https://api.covidtracking.com/v1/US/daily.json'
+	print(f"Getting api data at {apiaddr}")
 	data = json.loads(urllib.request.urlopen(apiaddr).read())
 	#Parse dates and increases
 	dates = [v for v in reversed([str(d["date"]) for d in data])]
 	increases = [v for v in [int(d["positiveIncrease"]) for d in data]]
 	#Smooth graph if specified
-	if smooth: increases = smooth_increases(increases)
+	if smooth:
+		print("Applying smooth.")
+		increases = smooth_increases(increases)
 	increases = [v for v in reversed(increases)]
 	dates = clean_dates(dates) #Make dates friendly for matplotlob
+	print("Making graph.")
 	plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m/%d/%Y'))
 	plt.gca().xaxis.set_major_locator(mdates.MonthLocator())
 	plt.plot(dates, increases)
@@ -178,5 +186,9 @@ if __name__ == "__main__":
 	plt.title(f"Daily New Covid Cases - 7 Day Rolling Average - {region}")
 	plt.ylabel("Daily New Cases")
 
-	if output: plt.savefig(filename) #Save to file
-	else: plt.show() #Show Graph
+	if output:
+		print(f"Saving graph to {filename}")
+		plt.savefig(filename) #Save to file
+	else:
+		print("Showing graph.")
+		plt.show() #Show Graph
