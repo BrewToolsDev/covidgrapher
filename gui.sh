@@ -1,0 +1,1 @@
+python3 covidgrapher_gui.py

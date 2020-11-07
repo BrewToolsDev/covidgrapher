@@ -1,0 +1,1 @@
+python.exe "covidgrapher_gui.py" %*
