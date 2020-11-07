@@ -42,10 +42,10 @@ Download the lastest version of covidgrapher.zip from [covidgrapher latest](http
     - Manjaro/Arch: `sudo pacman -S python3 python-pip`
   - Run `pip3 install -r requirements.txt` to install dependencies
   - If you intend to use the GUI:
-  		- Run `pip install -r requirements_gui.txt`
-    	- Then based on your distro do the following
-		    - Ubuntu/Debian: `sudo apt install python3-tk python3-pil.imagetk`
-		    - Manjaro/Arch: `sudo pacman -S tk python-pillow`
+  	- Run `pip install -r requirements_gui.txt`
+    - Then based on your distro do the following
+	  - Ubuntu/Debian: `sudo apt install python3-tk python3-pil.imagetk`
+      - Manjaro/Arch: `sudo pacman -S tk python-pillow`
 
 ## Usage:
 
