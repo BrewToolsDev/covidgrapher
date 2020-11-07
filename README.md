@@ -15,11 +15,11 @@ Uses numpy, matplotlib, PIL and Tkinter
     Python 3.6 or greater
     Dependencies vary by OS, GUI has additional requirements, see below.
 
-### Installation:
+## Installation:
 
 Download the lastest version of covidgrapher.zip from [covidgrapher latest](https://www.github.com/BrewToolsDev/covidgrapher/releases/latest)
 
-##### Windows:
+#### Windows:
 - Extract covidgrapher.zip to the location you intend to run it from.
 - Install [python](https://www.python.org/downloads/release/python-373/)
   - You *must* restart your pc after installing python.
@@ -27,14 +27,14 @@ Download the lastest version of covidgrapher.zip from [covidgrapher latest](http
 - In a command prompt navigate to the dir you extracted the app to and run `pip install -r requirements.txt` to install dependencies
   - If you intend to use the GUI run `pip install -r requirements_gui.txt` at this time.
 
-##### Macintosh:
+#### Macintosh:
 - Extract covidgrapher.zip to the location you intend to run it from.
 - Install [python](https://www.python.org/downloads/release/python-373/)
   - If you do a custom installation remember to install tcl/tk, add python to the path, and include pip
 - In a command prompt navigate to the dir you extracted the app to and run `pip3 install -r requirements.txt` to install dependencies
   - If you intend to use the GUI run `pip install -r requirements_gui.txt` at this time.
 
-##### Linux:
+#### Linux:
 - Extract covidgrapher.zip to the location you wish to run it from.
 - In a command prompt navigate to the dir you extracted the app to:
   - Install python and pip based on distro:
@@ -47,9 +47,9 @@ Download the lastest version of covidgrapher.zip from [covidgrapher latest](http
 		    - Ubuntu/Debian: `sudo apt install python3-tk python3-pil.imagetk`
 		    - Manjaro/Arch: `sudo pacman -S tk python-pillow`
 
-### Usage:
+## Usage:
 
-#### CLI:
+### CLI:
 	```
 	usage: covidgrapher.py [-h] [-o OUTPUT] [-r REGION] [-s] [-k]
 	optional arguments:
@@ -61,7 +61,7 @@ Download the lastest version of covidgrapher.zip from [covidgrapher latest](http
 	  -s, --smooth          Applies a 7-Day rolling average to account for weekly reporting spikes if specified.
 	  -k, --key             Key value to graph. Defaults to 'positiveIncrease.' Valid keys can be found in the README.
 	```
-###### Valid keys to graph include:
+##### Valid keys to graph include:
 - postitiveIncrease (default)
 - negativeIncrease
 - hospitalizedCurrently
@@ -74,22 +74,23 @@ Download the lastest version of covidgrapher.zip from [covidgrapher latest](http
 View raw json cached in /cache/json for full list of keys.
 This program comes with a tiny script called make_cached_json_readable.py that will format the cached json to be human readable. Simply run it, then open a cached json file in the text viewer or editor of your choice.
 
-#### GUI:
+### GUI:
 The GUI script does not take any arguments.
 
-##### Windows:
+#### Windows:
 - In Command Prompt navigate to the folder you extracted the zip to and run `python.exe covidgrapher_gui.py`
 - Aternatively double-click the included `gui.bat` file in File Explorer.
 
-##### Macintosh:
+#### Macintosh:
 - In Terminal navigate to the folder you extracted the zip to and run `python covidgrapher_gui.py`
 - Aternatively double-click `covidgrapher_gui.py` in Finder.
 
-##### Linux:
+#### Linux:
 - In Terminal / Shell navigate to the folder you extracted the zip to and run `python3 covidgrapher_gui.py`
 - Alternatively double-click the included `gui.sh` file in a file browser.
 
-#### Disclaimer: This program should not be used for anything critical. By using this program you agree not to hold me liable for any loss or injury that may occur.
+### Disclaimer:
+This program should not be used for anything critical. By using this program you agree not to hold me liable for any loss or injury that may occur.
 ```
 IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
 WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
