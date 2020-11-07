@@ -61,7 +61,7 @@ Download the lastest version of covidgrapher.zip from [covidgrapher latest](http
 	  -s, --smooth          Applies a 7-Day rolling average to account for weekly reporting spikes if specified.
 	  -k, --key             Key value to graph. Defaults to 'positiveIncrease.' Valid keys can be found in the README.
 	```
-##### Valid keys to graph include:
+#### Valid keys to graph include:
 - postitiveIncrease (default)
 - negativeIncrease
 - hospitalizedCurrently
@@ -86,7 +86,7 @@ The GUI script does not take any arguments.
 - Aternatively double-click `covidgrapher_gui.py` in Finder.
 
 #### Linux:
-- In Terminal / Shell navigate to the folder you extracted the zip to and run `python3 covidgrapher_gui.py`
+- In a terminal navigate to the folder you extracted the zip to and run `python3 covidgrapher_gui.py`
 - Alternatively double-click the included `gui.sh` file in a file browser.
 
 ### Disclaimer:
