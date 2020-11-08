@@ -216,7 +216,7 @@ def make_covid_graph(regions = None, smooth = True, filename = None, datakey = "
 		return filename
 	else:
 		tf = TemporaryFile("w+b", suffix = ".png")
-		plt.savefig(tf, format = "png", dpi = 300)
+		plt.savefig(tf, format = "png", dpi = 600)
 		if show: plt.show()
 		plt.clf()
 		return tf #Returns a buffer that can be opened as an image with PIL.open()
