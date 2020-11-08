@@ -4,6 +4,10 @@
 A python tool for producing covid graph data, with both command line and graphical interface.
 Uses numpy, matplotlib, PIL and Tkinter
 
+Covid Data provided by covidtracking.com
+
+Api data licensed under Creative Commons CC BY 4.0.
+
 ##### Output
 <p align="center"><img src="https://raw.githubusercontent.com/BrewToolsDev/covidgrapher/main/example.png"></p>
 
