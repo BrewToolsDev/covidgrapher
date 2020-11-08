@@ -57,11 +57,10 @@ DATA_OPTIONS_MAP = {
 REVERSED_DATA_OPTIONS_MAP = {}
 for v in DATA_OPTIONS_MAP: REVERSED_DATA_OPTIONS_MAP[DATA_OPTIONS_MAP[v]]=v
 
-DIR = os.path.dirname(os.getcwd())
+DIR = os.path.dirname(__file__)
 cache_folder = os.path.join(DIR, "cache")
-if not os.path.isdir(cache_folder): os.mkdir(cache_folder)
 json_folder = os.path.join(cache_folder, "json")
-if not os.path.isdir(json_folder): os.mkdir(json_folder)
+if not os.path.isdir(json_folder): os.makedirs(json_folder, exist_ok = True)
 
 """CACHING-----------------"""
 ETAGFILE = "cache/json/etags.json"
