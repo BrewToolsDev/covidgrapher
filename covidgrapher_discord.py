@@ -23,7 +23,7 @@ This argument must be passed an api url to download the graphs from.
 You can host your own api with covidgrapher_flask.py, if you are hosting the api on the same machine 
 as this script you can usually connect with covidgrapher.py -c 127.0.0.1:5000/"""
 	parser.add_argument("-c", "--client", required = False, help = clienthelp)
-	parser.add_argument("--token", required = False, help = "Discord API token. Set this if running without config.py")
+	parser.add_argument("-t", "--token", required = False, help = "Discord API token. Set this if running without config.py")
 	args = parser.parse_args()
 	bot.client = bool(args.client)
 	bot.api_url = args.client if bot.client else None

@@ -57,11 +57,7 @@ DATA_OPTIONS_MAP = {
 REVERSED_DATA_OPTIONS_MAP = {}
 for v in DATA_OPTIONS_MAP: REVERSED_DATA_OPTIONS_MAP[DATA_OPTIONS_MAP[v]]=v
 
-<<<<<<< Updated upstream
-DIR = os.path.dirname(__file__)
-=======
 DIR = os.path.abspath(os.path.dirname(__file__))
->>>>>>> Stashed changes
 cache_folder = os.path.join(DIR, "cache")
 json_folder = os.path.join(cache_folder, "json")
 if not os.path.isdir(json_folder): os.makedirs(json_folder, exist_ok = True)
