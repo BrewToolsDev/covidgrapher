@@ -1,2 +1,7 @@
 /cache/*
 *.pyc
+/venv/*
+covidgrapher_flask.log
+covidgrapher_discord.log
+config.py
+bot.log

@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Covid Grapher Flask</title><style></style></head><body id="preview">
+<p class="has-line-data" data-line-start="0" data-line-end="5"><a href=""><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License"></a><br>
+<a href=""><img src="https://img.shields.io/badge/API%20License-Creative%20Commons%20CC%20BY%204.0-blue" alt="API License"></a><br>
+<a href=""><img src="https://img.shields.io/badge/Language-Python-green" alt="Language"></a></p>
+<h1 class="code-line" data-line-start=6 data-line-end=7><a id="covidgrapherflask_6"></a>covidgrapherflask</h1>
+<p class="has-line-data" data-line-start="8" data-line-end="10">A python-based web api for producing covid graph data.<br>
+Uses numpy, matplotlib, and flask</p>
+<p class="has-line-data" data-line-start="11" data-line-end="12">Backend licensed under GPLv3</p>
+<p class="has-line-data" data-line-start="13" data-line-end="14">Covid Data provided by <a href="http://covidtracking.com">covidtracking.com</a></p>
+<p class="has-line-data" data-line-start="15" data-line-end="16">API data licensed under Creative Commons CC BY 4.0.</p>
+<h2 class="code-line" data-line-start=17 data-line-end=18><a id="Usage_17"></a>Usage:</h2>
+<p class="has-line-data" data-line-start="18" data-line-end="20">The url-based api takes the following arguments:<br>
+api.brewtools.dev/covid/graph/?</p>
+<ul>
+<li class="has-line-data" data-line-start="20" data-line-end="21">region=(region or regions separated by ‘+’) US if not specified</li>
+<li class="has-line-data" data-line-start="21" data-line-end="22">key=(key from list below) positiveIncrease if not specified</li>
+<li class="has-line-data" data-line-start="22" data-line-end="24">smooth=(False to turn off 7-day smoothing) True if not specified</li>
+</ul>
+<h4 class="code-line" data-line-start=24 data-line-end=25><a id="Example_24"></a>Example:</h4>
+<p class="has-line-data" data-line-start="25" data-line-end="26"><a href="https://api.brewtools.dev/covid/graph/?region=CA+WA&amp;key=positiveIncrease&amp;smooth=True">https://api.brewtools.dev/covid/graph/?region=CA+WA&amp;key=positiveIncrease&amp;smooth=True</a></p>
+<h4 class="code-line" data-line-start=28 data-line-end=29><a id="Valid_keys_to_graph_include_28"></a>Valid keys to graph include:</h4>
+<ul>
+<li class="has-line-data" data-line-start="29" data-line-end="30">postitiveIncrease (default)</li>
+<li class="has-line-data" data-line-start="30" data-line-end="31">negativeIncrease</li>
+<li class="has-line-data" data-line-start="31" data-line-end="32">hospitalizedCurrently</li>
+<li class="has-line-data" data-line-start="32" data-line-end="33">inIcuCurrently</li>
+<li class="has-line-data" data-line-start="33" data-line-end="34">onVentilatorCurrently</li>
+<li class="has-line-data" data-line-start="34" data-line-end="35">totalTestResultsIncrease</li>
+<li class="has-line-data" data-line-start="35" data-line-end="36">deathIncrease</li>
+<li class="has-line-data" data-line-start="36" data-line-end="38">hospitalizedIncrease</li>
+</ul>
+<h2 class="code-line" data-line-start=38 data-line-end=39><a id="Disclaimer_38"></a>Disclaimer:</h2>
+<p class="has-line-data" data-line-start="39" data-line-end="40">This program should not be used for anything critical. By using this program you agree not to hold me liable for any loss or injury that may occur.</p>
+<pre><code class="has-line-data" data-line-start="41" data-line-end="51">IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
+THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
+DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
+EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGES.
+</code></pre>
+</body></html>

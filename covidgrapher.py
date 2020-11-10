@@ -13,12 +13,12 @@ Run with -h for options.
 helpme = "Covid Stat Grapher by Andrew Spangler - GPLv3 - API under Creative Commons CC BY 4.0"
 
 import os, sys, json, shutil, argparse, subprocess, urllib.request
-import numpy as np
+from statistics import mean
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-from statistics import mean
-from copy import deepcopy
-from tempfile import TemporaryFile
+from matplotlib import use
+
+use('Agg') #Prevents graphs from failing on flask / threads
 
 opener = urllib.request.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -57,15 +57,37 @@ DATA_OPTIONS_MAP = {
 REVERSED_DATA_OPTIONS_MAP = {}
 for v in DATA_OPTIONS_MAP: REVERSED_DATA_OPTIONS_MAP[DATA_OPTIONS_MAP[v]]=v
 
+<<<<<<< Updated upstream
 DIR = os.path.dirname(__file__)
+=======
+DIR = os.path.abspath(os.path.dirname(__file__))
+>>>>>>> Stashed changes
 cache_folder = os.path.join(DIR, "cache")
 json_folder = os.path.join(cache_folder, "json")
 if not os.path.isdir(json_folder): os.makedirs(json_folder, exist_ok = True)
+
+def open_image_by_path(path):
+    cli_image = {
+    	'win32':'explorer',
+    	'linux':'xdg-open',
+  		'darwin':'open'
+  	}
+    subprocess.run([cli_image[sys.platform], path])
 
 """CACHING-----------------"""
 ETAGFILE = "cache/json/etags.json"
 etag_header = "If-None-Match" #Header for checking if etag is updated
 useragent = 'Mozilla/5.0'
+def download_file(url, file):
+	# try:
+	req = urllib.request.Request(url)
+	with urllib.request.urlopen(req) as response, open(file, 'wb+') as out_file:
+		shutil.copyfileobj(response, out_file)
+		print("file {} - Dowloaded".format(file))
+	return(file)
+	# except Exception as e:
+	# 	return f"Failed to download file - {file} - {e}"
+
 def accessETaggedFile(url, file):
 	req = urllib.request.Request(url)
 	req.add_header('User-Agent', useragent)
@@ -182,13 +204,10 @@ def make_covid_graph(regions = None, smooth = True, filename = None, datakey = "
 		regions = ["US"]
 		make_US_graph(smooth, datakey)
 	else:
-		for r in regions:
-			plot_regional_graph(r, smooth, datakey)
+		for r in regions: plot_regional_graph(r, smooth, datakey)
 	plt.gcf().autofmt_xdate() #Makes dates look nice
-
 	try: typestring = REVERSED_DATA_OPTIONS_MAP[datakey]
 	except: typestring = datakey
-
 	title = "Covid19 - "
 	title += typestring
 	if smooth: title += f" - 7 Day Rolling Average"
@@ -203,31 +222,57 @@ def make_covid_graph(regions = None, smooth = True, filename = None, datakey = "
 			if not i == lr: title +=", "
 			if not i % 15: title += "\n"
 			i += 1
-
 	plt.title(title)
 	plt.ylabel(typestring)
 	plt.legend(mode="expand", frameon = False, ncol = 7, loc = "upper left")
 	plt.tight_layout()
 	if filename:
 		print(f"Saving graph to {filename}")
-		plt.savefig(filename, format = "png", dpi = 300) #Save to file
-		if show: plt.show()
-		return filename
-	else:
-		tf = TemporaryFile("w+b", suffix = ".png")
-		plt.savefig(tf, format = "png", dpi = 600)
-		if show: plt.show()
-		plt.clf()
-		return tf #Returns a buffer that can be opened as an image with PIL.open()
+	else: filename = os.path.join(cache_folder, "lastimage.png")
+	plt.savefig(filename, format = "png", dpi = 300)
+	if show: open_image_by_path(filename)
 	plt.clf()
+	return filename
+
 """ENDGRAPHING-----------------"""
+
+#Client method to access images hosted by covidgrapher_flask.py
+def get_covid_graph_from_api(api_url, regions = ["US"], smooth = True, filename = None, datakey = "positiveIncrease", show = False):
+	if type(regions) is str:
+		regions = [regions]		
+	smooth = str(bool(smooth)).upper()
+	if not api_url.endswith("/"): api_url += "/"
+	geturl = api_url + f"graph/?smooth={smooth}"
+	if regions:
+		if len(regions) > 1:
+			outstr = ""
+			for r in regions:
+				outstr += r.upper()
+				if not regions.index(r) == len(regions) - 1:
+					outstr += "+"
+			geturl += f"&region={outstr}"
+		else:
+			r = regions[0].upper()
+			geturl += f"&region={r}"
+	if datakey:
+		geturl += f"&key={datakey}"
+	print(f"Downloading - {geturl}")
+	filename = filename or os.path.join(cache_folder, "last_graph.png")
+	f = download_file(geturl, filename)
+	print(f,filename)
+	if show: open_image_by_path(filename)
+	return f
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description=helpme)
-	parser.add_argument("-o", "--output", required = False, help = "Outputs graph to passed filename if specified, if not graph will be displayed in a matplotlib window.")
-	parser.add_argument("-r", "--region", required = False, help = 'Region of graph, defaults to entire US if not specified. Pass multiple regions as a string separated by spaces eg "US CA WA OR"')
+	clienthelp = """Runs the script in client mode. This argument must be passed an api url to download the graphs from.
+You can host your own api with covidgrapher_flask.py, if you are hosting the api on the same machine 
+as this script you can usually connect with covidgrapher.py -c 127.0.0.1:5000/"""
+	parser.add_argument("-o", "--output", required = False, help = "Outputs graph to passed filename if specified, if not graph will be opened in the system default file viewer.")
+	parser.add_argument("-r", "--region", required = False, help = "Region of graph, defaults to entire US if not specified. Pass multiple regions as a string separated by spaces eg 'US CA WA OR'")
+	parser.add_argument("-c", "--client", required = False, help = clienthelp)
 	parser.add_argument("-s", "--smooth", action = "store_true", help = "Applies a 7-Day rolling average to account for weekly reporting spikes if specified.")
-	parser.add_argument("-k", "--key", action = "store_true", help = "Key value to graph. Defaults to 'positiveIncrease.' Valid keys can be found in the README.")
+	parser.add_argument("-k", "--key", help = "Key value to graph. Defaults to 'positiveIncrease.' Valid keys can be found in the README.")
 	args = parser.parse_args()
 	filename = os.path.abspath(args.output) if args.output else None
 	
@@ -239,4 +284,8 @@ if __name__ == "__main__":
 
 	datakey = args.key or "positiveIncrease"
 	show = False if filename else True
-	graph = make_covid_graph(regions, args.smooth, filename = filename, datakey = datakey, show = show)
+
+	if args.client:
+		print("Getting from api")
+		graph = get_covid_graph_from_api(args.client, regions, args.smooth, filename = filename, datakey = datakey, show = show)
+	else: graph = make_covid_graph(regions, args.smooth, filename = filename, datakey = datakey, show = show)
