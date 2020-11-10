@@ -10,6 +10,9 @@ app = Flask(__name__)
 t = time.ctime()
 print(f"Started at {t}")
 
+DIR = os.path.abspath(os.path.dirname(__file__))
+logfile = os.path.join(DIR, __file__.split(".")[0] + ".log")
+
 def log_decor(method):
 	def apply(*args, **kw):
 		try:
@@ -45,6 +48,14 @@ def log():
 		with open(logfile) as f:
 			return f.read().replace("\n", "<br/>")
 	return do_log()
+
+@app.route('/form/')
+def form():
+	@log_decor
+	def do_form():
+		with open("SITE/form.html") as f:
+			return f.read()
+	return do_form()
 
 @app.route("/graph/")
 def graph():

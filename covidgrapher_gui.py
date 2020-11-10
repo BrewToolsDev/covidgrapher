@@ -25,6 +25,6 @@ as this script you can usually connect with {__file__} -c 127.0.0.1:5000/"""
 	api_url = args.client if client else None
 	graph_function = get_covid_graph_from_api if client else make_covid_graph
 	if client: print(f"Running in Client mode with api at {api_url}. Graphs will be generated remotely.")
-	else: print(f"Running in Local mode. Graphe will be generated locally.")
+	else: print(f"Running in Local mode. Graphs will be generated locally.")
 	app = Controller(VERSION, graph_function, client = client, api_url = api_url, devmode = False)
 	app.start_mainloop() #Call tk mainloop
