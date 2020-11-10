@@ -225,7 +225,7 @@ def make_covid_graph(regions = None, smooth = True, filename = None, datakey = "
 	if filename:
 		print(f"Saving graph to {filename}")
 	else: filename = os.path.join(cache_folder, "lastimage.png")
-	plt.savefig(filename, format = "png", dpi = 300)
+	plt.savefig(filename, format = "png", dpi = 150)
 	if show: open_image_by_path(filename)
 	plt.clf()
 	return filename

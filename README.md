@@ -5,7 +5,7 @@ A python tool for producing covid graph data, with a variety of interfaces.
 Uses matplotlib, PIL, Tkinter, Flask, and tweepy.
 Has basic examples of usage with Discord and Twitter.
 
-Covid Data provided by covidtracking.com
+Covid19 metadata provided by covidtracking.com
 
 API data licensed under Creative Commons CC BY 4.0.
 
