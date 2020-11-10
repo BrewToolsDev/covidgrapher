@@ -78,15 +78,15 @@ This step must be completed for any portion of the project to work.
 
 #### CLI:
 ```
-	usage: covidgrapher.py [-h] [-o OUTPUT] [-r REGION] [-s] [-k]
-	optional arguments:
-		-h, --help            show this help message and exit
-		-o OUTPUT, --output OUTPUT
-													Outputs graph to passed filename if specified, if not graph will be displayed in a matplotlib window.
-		-r REGION, --region REGION
-													Region of graph, defaults to entire US if not specified. Pass multiple regions as a string separated by spaces eg "US CA WA OR"
-		-s, --smooth          Applies a 7-Day rolling average to account for weekly reporting spikes if specified.
-		-k, --key             Key value to graph. Defaults to 'positiveIncrease.' Valid keys can be found in the README.
+usage: covidgrapher.py [-h] [-o OUTPUT] [-r REGION] [-s] [-k]
+optional arguments:
+	-h, --help            show this help message and exit
+	-o OUTPUT, --output OUTPUT
+												Outputs graph to passed filename if specified, if not graph will be displayed in a matplotlib window.
+	-r REGION, --region REGION
+												Region of graph, defaults to entire US if not specified. Pass multiple regions as a string separated by spaces eg "US CA WA OR"
+	-s, --smooth          Applies a 7-Day rolling average to account for weekly reporting spikes if specified.
+	-k, --key             Key value to graph. Defaults to 'positiveIncrease.' Valid keys can be found in the README.
 ```
 ##### Valid keys to graph include:
 - postitiveIncrease (default)
@@ -128,13 +128,13 @@ optional arguments:
 
 #### Discord Bot:
 ```
-	usage: covidgrapher_discord.py [-h] [-c CLIENT] [--token TOKEN]
-	optional arguments:
-	  -h, --help            show this help message and exit
-	  -c CLIENT, --client CLIENT
-	                        Runs the script in client mode which downloads the graphs from an api host rather than generating them locally. This argument must be passed an api url to download the graphs from. You
-	                        can host your own api with covidgrapher_flask.py, if you are hosting the api on the same machine as this script you can usually connect with covidgrapher.py -c 127.0.0.1:5000/
-	  --token TOKEN         Discord API token. Set this if running without config.py
+usage: covidgrapher_discord.py [-h] [-c CLIENT] [--token TOKEN]
+optional arguments:
+  -h, --help            show this help message and exit
+  -c CLIENT, --client CLIENT
+                        Runs the script in client mode which downloads the graphs from an api host rather than generating them locally. This argument must be passed an api url to download the graphs from. You
+                        can host your own api with covidgrapher_flask.py, if you are hosting the api on the same machine as this script you can usually connect with covidgrapher.py -c 127.0.0.1:5000/
+  --token TOKEN         Discord API token. Set this if running without config.py
 ```
 The discord bot requires a bot token to work. See [Getting Bot Token](https://www.writebots.com/discord-bot-token/)
 You must create a file in the same directory as the script called 'config.py' and add the line `discord_token = "XYZ"` where XYZ is the token.
@@ -157,26 +157,26 @@ You must then invite the bot to your server (also detailed in the Bot Token link
 
 #### Twitter Poster:
 ```
-	usage: covidgrapher_twitter.py [-h] [-d DELAY] [-r REGION] [-c CLIENT] [-s] [-k KEY] [--api_key API_KEY] [--api_secret_key API_SECRET_KEY] [--access_token ACCESS_TOKEN] [--access_token_secret ACCESS_TOKEN_SECRET]
-	optional arguments:
-	  -h, --help            show this help message and exit
-	  -d DELAY, --delay DELAY
-	                        Post interval in minutes, by default 1440 (one day).
-	  -r REGION, --region REGION
-	                        Region of graph, defaults to entire US if not specified. Pass multiple regions as a string separated by spaces eg 'US CA WA OR'
-	  -c CLIENT, --client CLIENT
-	                        Runs the script in client mode which downloads the graphs from an api host rather than generating them locally using data from covidtracking.com". This argument must be passed an api
-	                        url to download the graphs from. You can host your own api with covidgrapher_flask.py, if you are hosting the api on the same machine as this script you can usually connect with
-	                        covidgrapher_twitter.py -c 127.0.0.1:5000/
-	  -s, --smooth          Applies a 7-Day rolling average to account for weekly reporting spikes if specified.
-	  -k KEY, --key KEY     Data key value to graph. Defaults to 'positiveIncrease.' Valid keys can be found in the README.
-	  --api_key API_KEY     Twitter API key. Set this if running without config.py
-	  --api_secret_key API_SECRET_KEY
-	                        Twitter API secret key. Set this if running without config.py
-	  --access_token ACCESS_TOKEN
-	                        Twitter access token. Set this if running without config.py
-	  --access_token_secret ACCESS_TOKEN_SECRET
-	                        Twitter access token secret. Defaults to 'positiveIncrease.' Valid keys can be found in the README.
+usage: covidgrapher_twitter.py [-h] [-d DELAY] [-r REGION] [-c CLIENT] [-s] [-k KEY] [--api_key API_KEY] [--api_secret_key API_SECRET_KEY] [--access_token ACCESS_TOKEN] [--access_token_secret ACCESS_TOKEN_SECRET]
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DELAY, --delay DELAY
+                        Post interval in minutes, by default 1440 (one day).
+  -r REGION, --region REGION
+                        Region of graph, defaults to entire US if not specified. Pass multiple regions as a string separated by spaces eg 'US CA WA OR'
+  -c CLIENT, --client CLIENT
+                        Runs the script in client mode which downloads the graphs from an api host rather than generating them locally using data from covidtracking.com". This argument must be passed an api
+                        url to download the graphs from. You can host your own api with covidgrapher_flask.py, if you are hosting the api on the same machine as this script you can usually connect with
+                        covidgrapher_twitter.py -c 127.0.0.1:5000/
+  -s, --smooth          Applies a 7-Day rolling average to account for weekly reporting spikes if specified.
+  -k KEY, --key KEY     Data key value to graph. Defaults to 'positiveIncrease.' Valid keys can be found in the README.
+  --api_key API_KEY     Twitter API key. Set this if running without config.py
+  --api_secret_key API_SECRET_KEY
+                        Twitter API secret key. Set this if running without config.py
+  --access_token ACCESS_TOKEN
+                        Twitter access token. Set this if running without config.py
+  --access_token_secret ACCESS_TOKEN_SECRET
+                        Twitter access token secret. Defaults to 'positiveIncrease.' Valid keys can be found in the README.
 ```
 This is a very basic twitter posting script, more of a proof of concept than anything.
 you will have to get a Twitter developer account and create a file in the same directory as the script called 
