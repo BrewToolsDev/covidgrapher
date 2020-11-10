@@ -15,6 +15,12 @@ API data licensed under Creative Commons CC BY 4.0.
 ##### Graphical Interface
 <p align="center"><img src="https://raw.githubusercontent.com/BrewToolsDev/covidgrapher/main/docu/example_gui.png"></p>
 
+##### Discord Bot
+<p align="center"><img src="https://raw.githubusercontent.com/BrewToolsDev/covidgrapher/main/docu/discord.png"></p>
+
+##### Flask API
+<p align="center"><img src="https://raw.githubusercontent.com/BrewToolsDev/covidgrapher/main/docu/web.png"></p>
+
 #### Requirements:
 		Works on: macOS, Windows, Linux
 		Python 3.6 or greater
@@ -151,10 +157,10 @@ You must then invite the bot to your server (also detailed in the Bot Token link
 - Usage
 	- Type `c.help` in a discord server with the bot to receive a help message and a list of valid commands.
 	- To get a graph use `c.graph [data_key=positiveIncrease] [smooth=True] [regions=US]` for example:
-	```
-	- c.graph positiveIncrease TRUE US
-	- c.graph inIcuCurrently TRUE "CA WA OR ID"
-	```
+		```
+		- c.graph positiveIncrease TRUE US
+		- c.graph inIcuCurrently TRUE "CA WA OR ID"
+		```
 		
 #### Twitter Poster:
 ```
