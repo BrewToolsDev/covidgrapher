@@ -150,11 +150,12 @@ You must then invite the bot to your server (also detailed in the Bot Token link
 		- run `python covidgrapher_discord.py`
 - Usage
 	- Type `c.help` in a discord server with the bot to receive a help message and a list of valid commands.
-	- To get a graph use `c.graph [data_key=positiveIncrease] [smooth=True] [regions=US]`
-		- Examples:
-		- c.graph positiveIncrease TRUE US
-		- c.graph inIcuCurrently TRUE "CA WA OR ID"
-
+	- To get a graph use `c.graph [data_key=positiveIncrease] [smooth=True] [regions=US]` for example:
+	```
+	- c.graph positiveIncrease TRUE US
+	- c.graph inIcuCurrently TRUE "CA WA OR ID"
+	```
+		
 #### Twitter Poster:
 ```
 usage: covidgrapher_twitter.py [-h] [-d DELAY] [-r REGION] [-c CLIENT] [-s] [-k KEY] [--api_key API_KEY] [--api_secret_key API_SECRET_KEY] [--access_token ACCESS_TOKEN] [--access_token_secret ACCESS_TOKEN_SECRET]
