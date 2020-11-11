@@ -155,6 +155,9 @@ margin-right: auto;
 	margin-left: auto;
 	margin-right: auto;
 }
+[type="checkbox"]{
+    vertical-align:middle;
+}
 """
 
 HOMEPAGE = """<h1>Covid Grapher Web Interface</h1>
@@ -171,91 +174,91 @@ HOMEPAGE = """<h1>Covid Grapher Web Interface</h1>
 
 COVIDFORM = """
 <h1>Covid Grapher API Web Interface</h1>
-		<h2>Covid19 metadata provided by covidtracking.com</h2>
-		<h2>API data licensed under Creative Commons CC BY 4.0.</h2>
-		<br>
-		<label for="smooth" class="centered_label"> Apply a 7-day rolling average to graph data?</label>
-		<input type="checkbox" id="smooth" name="smooth" value="True" class="centered_label">
-		<br>
-		<label class="centered_label" for="data_key">Graph Data Key</label>
-		<select name='data_key' id='data_key' class = 'wide_select'>
-			<option value="positiveIncrease">New Cases</option>
-			<option value="hospitalizedCurrently">Hospitalized</option>
-			<option value="inIcuCurrently">In ICU</option>
-			<option value="onVentilatorCurrently">On Ventilator</option>
-			<option value="deathIncrease">Confirmed Deaths</option>
-		</select>
-		<br>
-			<br>
-				<label class="centered_label" for="region">
-				Regions: (CTRL+Click for multiple regions)
-				</label>
-			</br>
-			<select name='region' id='region' class='wide_select' size=10 multiple>
-				<option value='AL'>AL</option>
-				<option value='AK'>AK</option>
-				<option value='AZ'>AZ</option>
-				<option value='AR'>AR</option>
-				<option value='CA'>CA</option>
-				<option value='CO'>CO</option>
-				<option value='CT'>CT</option>
-				<option value='DC'>DC</option>
-				<option value='DE'>DE</option>
-				<option value='FL'>FL</option>
-				<option value='GA'>GA</option>
-				<option value='GU'>GU</option>
-				<option value='HI'>HI</option>
-				<option value='ID'>ID</option>
-				<option value='IL'>IL</option>
-				<option value='IN'>IN</option>
-				<option value='IA'>IA</option>
-				<option value='KS'>KS</option>
-				<option value='KY'>KY</option>
-				<option value='LA'>LA</option>
-				<option value='ME'>ME</option>
-				<option value='MD'>MD</option>
-				<option value='MP'>MP</option>
-				<option value='MA'>MA</option>
-				<option value='MI'>MI</option>
-				<option value='MN'>MN</option>
-				<option value='MS'>MS</option>
-				<option value='MO'>MO</option>
-				<option value='MT'>MT</option>
-				<option value='NE'>NE</option>
-				<option value='NV'>NV</option>
-				<option value='NH'>NH</option>
-				<option value='NJ'>NJ</option>
-				<option value='NM'>NM</option>
-				<option value='NY'>NY</option>
-				<option value='NC'>NC</option>
-				<option value='ND'>ND</option>
-				<option value='OH'>OH</option>
-				<option value='OK'>OK</option>
-				<option value='OR'>OR</option>
-				<option value='PA'>PA</option>
-				<option value='PR'>PR</option>
-				<option value='RI'>RI</option>
-				<option value='SC'>SC</option>
-				<option value='SD'>SD</option>
-				<option value='TN'>TN</option>
-				<option value='TX'>TX</option>
-				<option value='US'>US</option>
-				<option value='UT'>UT</option>
-				<option value='VT'>VT</option>
-				<option value='VA'>VA</option>
-				<option value='VI'>VI</option>
-				<option value='WA'>WA</option>
-				<option value='WV'>WV</option>
-				<option value='WI'>WI</option>
-				<option value='WY'>WY</option>
-			</select>
-		<br>
-		</br>
-			<button class = "wide_button" onClick="onClickLoad();"><span>Build Graph</span></button>
-		<br></br>
-		<img id="output" class = "wide_img" src="" onerror="imgError(this)" onload="setIntroImage(this)">
+<h2>Covid19 metadata provided by covidtracking.com</h2>
+<h2>API data licensed under Creative Commons CC BY 4.0.</h2>
+<br>
+<label for="smooth" style="word-wrap:break-word" class="centered_label"> Apply a 7-day rolling average to graph data?
+<input type="checkbox" id="smooth" name="smooth" value="True" class="centered_label" />
+</label>
+<br>
+<label class="centered_label" for="data_key">Graph Data Key</label>
+<select name='data_key' id='data_key' class = 'wide_select'>
+	<option value="positiveIncrease">New Cases</option>
+	<option value="hospitalizedCurrently">Hospitalized</option>
+	<option value="inIcuCurrently">In ICU</option>
+	<option value="onVentilatorCurrently">On Ventilator</option>
+	<option value="deathIncrease">Confirmed Deaths</option>
+</select>
+<br>
+<br>
+	<label class="centered_label" for="region">
+	Regions: (CTRL+Click for multiple regions)
+	</label>
+</br>
+<select name='region' id='region' class='wide_select' size=10 multiple>
+	<option value='AL'>AL</option>
+	<option value='AK'>AK</option>
+	<option value='AZ'>AZ</option>
+	<option value='AR'>AR</option>
+	<option value='CA'>CA</option>
+	<option value='CO'>CO</option>
+	<option value='CT'>CT</option>
+	<option value='DC'>DC</option>
+	<option value='DE'>DE</option>
+	<option value='FL'>FL</option>
+	<option value='GA'>GA</option>
+	<option value='GU'>GU</option>
+	<option value='HI'>HI</option>
+	<option value='ID'>ID</option>
+	<option value='IL'>IL</option>
+	<option value='IN'>IN</option>
+	<option value='IA'>IA</option>
+	<option value='KS'>KS</option>
+	<option value='KY'>KY</option>
+	<option value='LA'>LA</option>
+	<option value='ME'>ME</option>
+	<option value='MD'>MD</option>
+	<option value='MP'>MP</option>
+	<option value='MA'>MA</option>
+	<option value='MI'>MI</option>
+	<option value='MN'>MN</option>
+	<option value='MS'>MS</option>
+	<option value='MO'>MO</option>
+	<option value='MT'>MT</option>
+	<option value='NE'>NE</option>
+	<option value='NV'>NV</option>
+	<option value='NH'>NH</option>
+	<option value='NJ'>NJ</option>
+	<option value='NM'>NM</option>
+	<option value='NY'>NY</option>
+	<option value='NC'>NC</option>
+	<option value='ND'>ND</option>
+	<option value='OH'>OH</option>
+	<option value='OK'>OK</option>
+	<option value='OR'>OR</option>
+	<option value='PA'>PA</option>
+	<option value='PR'>PR</option>
+	<option value='RI'>RI</option>
+	<option value='SC'>SC</option>
+	<option value='SD'>SD</option>
+	<option value='TN'>TN</option>
+	<option value='TX'>TX</option>
+	<option value='US'>US</option>
+	<option value='UT'>UT</option>
+	<option value='VT'>VT</option>
+	<option value='VA'>VA</option>
+	<option value='VI'>VI</option>
+	<option value='WA'>WA</option>
+	<option value='WV'>WV</option>
+	<option value='WI'>WI</option>
+	<option value='WY'>WY</option>
+</select>
+<br>
+</br>
+	<button class = "wide_button" onClick="onClickLoad();"><span>Build Graph</span></button>
+<br></br>
+<img id="output" class = "wide_img" src="" onerror="imgError(this)" onload="setIntroImage(this)">
 """
-
 
 COVIDFORMSCRIPT = """
 let introImage = "data:image/png;base64,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"
