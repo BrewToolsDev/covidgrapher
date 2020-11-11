@@ -3,8 +3,12 @@ from flask import Flask, request, send_file
 
 from covidgrapher import make_covid_graph
 
+from SITE.easy_html_generator import build_page, make_html_table_from_dict
+from SITE.dynamic_page_code import STYLE, HOMEPAGE, COVIDFORM, COVIDFORMSCRIPT 
+
+
 def getHTMLErrorString(title, error):
-	return f"{title}<br/>{error}"
+	return f"<p class='errorheader'>{title}</p><p class='errortext'>{error}</p>"
  
 app = Flask(__name__)
 t = time.ctime()
@@ -21,6 +25,7 @@ def log_decor(method):
 			outstr = f"Method '{name}' at {t}"
 			print(outstr)
 			start = time.time()
+			print(args, kw)
 			result = method(*args, **kw)
 			end = time.time()
 			outstr = 'Method - {} took {} ms'.format(method.__name__, "%2.2f" % ((end - start) * 1000))
@@ -30,31 +35,33 @@ def log_decor(method):
 			title = f"Error running {method.__name__} with args {args} and kwargs {kw}"
 			string = traceback.format_exc()
 			print(title, string)
-			return getHTMLErrorString(title, string.replace("\n", "<br/>"))
+			return build_page("Error loading page", getHTMLErrorString(title, string.replace("\n", "<br/>")), STYLE)
 	return apply
 		
 @app.route('/')
 def home():
 	@log_decor
 	def do_home():
-		with open("SITE/home.html") as f:
-			return f.read()
+		return build_page("Covid Grapher Flask Home Page", HOMEPAGE, STYLE)
 	return do_home()
 
 @app.route('/log/')
 def log():
 	@log_decor
 	def do_log():
-		with open(logfile) as f:
-			return f.read().replace("\n", "<br/>")
+		with open ("covidgrapher_flask.log") as log:
+			l = log.read()
+		logstring = "<h1>Covid Grapher Log</h1>"
+		for l in reversed(l.splitlines()):
+			logstring += f"<p class='logline'>{l}</p>"
+		return build_page("Covid Grapher Log", logstring, STYLE)
 	return do_log()
 
 @app.route('/form/')
 def form():
 	@log_decor
 	def do_form():
-		with open("SITE/form.html") as f:
-			return f.read()
+		return build_page("Covid Grapher API Web Form", COVIDFORM, STYLE, COVIDFORMSCRIPT)
 	return do_form()
 
 @app.route("/graph/")

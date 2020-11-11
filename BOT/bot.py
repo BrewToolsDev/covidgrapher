@@ -1,12 +1,12 @@
 import os, sys, json, time, logging, traceback
 import logging.handlers
+import discord
 import asyncio
 import aiohttp
-
-import discord
-from discord.ext import commands
-
+from discord.ext import commands, tasks
 from covidgrapher import make_covid_graph
+
+VERSION = 0.1
 
 aboutstring = """
 covidgrapher_discord
@@ -54,11 +54,10 @@ log.addHandler(file_handler)
 log.addHandler(stdout_handler)
 
 bot = commands.Bot(command_prefix="c.", description="The covid bot", pm_help=False)
-
-bot.log = log
+bot.load_extension("BOT.cogs.webserver")
 bot.loop = asyncio.get_event_loop()
-bot.script_name = script_name
-bot.make_covid_graph = None
+bot.log = log
+bot.version = VERSION
 
 @bot.event
 async def on_ready():
@@ -68,8 +67,10 @@ async def on_ready():
 
 	log.info(f'\nLogged in as: {bot.user.name} - '
 			 f'{bot.user.id}\ndpy version: {discord.__version__}\n')
- 
+
 	activity = discord.Activity(name="c.help",type=discord.ActivityType.listening)
+	bot.name = bot.user.name
+	bot.id = bot.user.id
 	await bot.change_presence(activity=activity)
 
 @bot.event
@@ -147,6 +148,10 @@ async def on_message(message):
 		return
 	ctx = await bot.get_context(message)
 	await bot.invoke(ctx)
+
+
+
+
 
 if __name__ == "__main__":
 	bot.run(TOKEN, bot=True, reconnect=True)

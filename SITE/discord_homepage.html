@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+    	<title>Covid Grapher Discord Bot Home Page</title>
+    	<style>	
+            h1 {
+                margin-top: 0;
+                margin-bottom: 0;
+                text-align: center;
+                color: #cccccc;
+            }
+            h2 {
+                margin-top: 0;
+                margin-bottom: 0;
+                font-size: 12px;
+                text-align: center;
+                color: #cccccc;
+            }
+            code { 
+                font-size: 12px;
+                text-align: center;
+                color: #cccccc;
+            }
+            body {
+            	background-color: #333333;
+            }
+            .centerimg {
+				display: block;
+				text-align: center;
+				height: 300;
+				width: 50%;
+				margin-left: auto;
+ 				margin-right: auto;
+			}
+			.shieldimg {
+				display: block;
+				margin-left: auto;
+ 				margin-right: auto;
+			}
+			.shieldrow{
+				margin-top: 0;
+			    text-align: center;
+			}
+			.shieldslot{
+				margin-top: 0;
+			    display: inline-block;
+			}
+			/* Add a black background color to the top navigation */
+			.topnav {
+				background-color: #333366;
+				overflow: hidden;
+			}
+
+			/* Style the links inside the navigation bar */
+			.topnav a {
+				float: left;
+				display: block;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 20px 14px;
+				text-decoration: none;
+				font-size: 17px;
+			}
+			/* Change the color of links on hover */
+			.topnav a:hover {
+				background-color: #222222;
+				color: white;
+			}
+			/* Add an active class to highlight the current page */
+			.topnav a.active {
+				background-color: #4CAF50;
+			  color: white;
+			}
+			/* Hide the link that should open and close the topnav on small screens */
+			.topnav .icon {
+				display: none;
+			}
+        </style>
+    </head>
+    <body>
+    	<div class= "mainbody">
+    		<div class="topnav">
+				<a href="./log">Online Bot Log</a>
+				<a href="./form">Graph API Web Form</a>
+				<a href="./bot">Bot Statistics</a>
+				<a href="./about">About</a>
+				<a href="https://covidtracking.com/">The COVID Tracking Project</a>
+			</div>
+			<h1>Covid Grapher Discord Bot Web Interface</h1>
+			<h2>Covid19 metadata provided by covidtracking.com</h2>
+			<h2>API data licensed under Creative Commons CC BY 4.0.</h2>
+			<div class="shieldrow">
+			    <div class="shieldslot"><a href=""><img class="shieldimg" src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License"></a></div>
+			    <div class="shieldslot"><a href=""><img class="shieldimg" src="https://img.shields.io/badge/API%20License-Creative%20Commons%20CC%20BY%204.0-blue" alt="API License"></a></div>
+			    <div class="shieldslot"><a href=""><img class="shieldimg" src="https://img.shields.io/badge/Language-Python-green" alt="Language"></a></div>
+			</div>
+			<img class="centerimg" src="./graph/?region=US&smooth=TRUE&session=53889&key=positiveIncrease" alt="Language">
+			<br>
+			<code>
+			IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+			WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
+			THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+			GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+			USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
+			DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+			PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
+			EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+			SUCH DAMAGES.
+			</code>
+	   	</div>
+    </body>
+</html>
